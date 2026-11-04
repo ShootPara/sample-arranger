@@ -1,6 +1,6 @@
 # Decisions, open questions and documentation maintenance
 
-Updated 2026-11-03.
+Updated 2026-11-04.
 
 ## Accepted decisions
 
@@ -8,12 +8,12 @@ Updated 2026-11-03.
 - Full-app day-one VST3; effects/other hosting needs not excluded.
 - Built-in sounds and user-installed compatible downloaded plugins.
 - Local model preference and existing infrastructure must be respected.
-- Broker-accessible CLI for authorized PCs; narration overlay is an app workflow.
+- CLI/shared commands on this Windows PC; earlier multi-PC intent was superseded by the local-only owner decision. Narration overlay remains an app workflow.
 - One clarification/confirmation where needed; refined prompt authoritative, initial prompt background.
 - Normal output MP3 192 kbps, at most four minutes, retained per-job folders removable by user.
 - Configurable local persistence/temporary sessions; disposable continuous mode with no save option.
 - Sophisticated internal logic, not a named script integration. Arranging/rendering, not recording/live performance.
-- Documentation-only work now. No publication, installs, purchases or implementation.
+- Implementation and personal local deployment are authorized and delivered. Sanitized public source publication to ShootPara/sample-arranger was explicitly approved. Purchases/new legal agreements/security expansion remain separately gated.
 - Parent update: iBuyPower2022 live environment is NOT authorized for tasks. Alienware and Drive/backup research only. Parent received the source-gap report.
 
 ## Historical research questions (accepted decisions below supersede these)

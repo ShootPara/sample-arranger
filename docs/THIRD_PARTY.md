@@ -1,7 +1,7 @@
 # Code, assets and distribution rights inventory
 
 Updated2026-11-04. Application source is under AGPLv3 (LICENSE, official GNU text).
-The app is not published. This inventory is incomplete distribution due diligence,
+Sanitized app source is published at ShootPara/sample-arranger; the personal Windows bundle is not cleared for public binary distribution. This inventory is incomplete distribution due diligence,
 not a declaration that every possible dependency/plugin/asset is compatible.
 
 Development-only independent schema validator (installed2026-11-04 in private
@@ -38,8 +38,7 @@ download is not permission to redistribute code, soundfonts, styles or sample pa
 
 Before public distribution: inspect exact runtime/transitive notices, decide
 source-offer/binary distribution obligations, review assets/presets/weights separately
-and sanitize private operational paths/Drive references. Public-repo intent still
-does not authorize push/publication. No recurring paid service is required here.
+and sanitize private operational paths/Drive references. The owner separately authorized source publication to ShootPara/sample-arranger. Public binary distribution remains uncleared. No recurring paid service is required here.
 
 Private local packaging tests include existing FFmpeg executables and Qt/Python/
 NumPy runtimes. This is not redistribution clearance. No user VST3 binaries, sample

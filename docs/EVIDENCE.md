@@ -9,10 +9,13 @@ Actual Windows Qt/native/MP3 workflows and isolated-path frozen smoke were exerc
 Synthetic own-process WASAPI loopback is Windows-engine evidence, not acoustic
 capture. Historical failed probes/soaks, RX bypass failure and the approximately
 -91dB near-silent job remain known gaps; other passing fixtures do not repair them.
-Two-hour device runs belong to their pinned copied source/binaries. A newer ongoing
-run is not called passed before its terminal/cleanup evidence. No microphone was used.
+Two-hour device runs belong to their pinned copied source/binaries. The newer run was intentionally interrupted for delivery after14chunks/841.437s;
+its four owned leftover chunks were recovered and cleanup reported zero sessions/bytes.
+It is not a completed two-hour pass. No microphone was used.
 
 The final usability changes received bounded targeted checks rather than another
 exhaustive suite. This is usable development delivery, not broad vendor, clean-machine,
 accessibility, musical-quality or public binary redistribution clearance. No live AI
 or coding credentials are included. User audio/catalogs/jobs/plugins are not published.
+
+Source publication and personal local delivery completed. See DELIVERY.md and FEEDBACK.md.

@@ -17,8 +17,7 @@ unknown alternate binary is accepted merely because it is on PATH. Upstream arch
 corroboration and redistribution/source/notices remain open. No automatic FFmpeg or
 plugin download, security-policy change or paid purchase is performed by this check.
 
-Updated2026-11-04. Tested on Alienware Windows x64. No installer, clean-machine
-acceptance or signed distribution is claimed yet. The app does not need a public
+Updated2026-11-04. Tested on Alienware Windows x64. Personal user-space deployment and launchers are delivered through scripts/deploy-local.ps1. Clean-machine acceptance and a signed public installer are not claimed. The app does not need a public
 listener, firewall changes, administrator rights or a paid service for local audio.
 
 ## Prerequisites and pinned native build

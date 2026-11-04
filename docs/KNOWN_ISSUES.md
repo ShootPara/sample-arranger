@@ -3,6 +3,10 @@
 Updated2026-11-04. Full intended scope is retained in REQUIREMENTS.md; unfinished
 features are not presented as completed or silently removed from the product.
 
+Actual user listening feedback describes the current music as nice but reminiscent
+of dungeon-crawler music. More useful variation across future requested generations
+is an objective, not a new delivery blocker or broad test program. See FEEDBACK.md.
+
 - Live AI is disconnected pending a separately approved app identity/adapter.
   Deterministic local planning/rendering works. Compact sample/MIDI intentions and
   bounded transport behavior have fixtures; they are not live inference evidence.

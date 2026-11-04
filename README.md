@@ -13,7 +13,7 @@ app; they are not deferred release options.
 
 ## Start using it
 
-Read the [quick start](docs/QUICKSTART.md) and [known issues](docs/KNOWN_ISSUES.md).
+Read the [delivery record](docs/DELIVERY.md), [quick start](docs/QUICKSTART.md) and [known issues](docs/KNOWN_ISSUES.md).
 Personal Windows deployment uses `scripts/deploy-local.ps1 -Package <built folder>`
 and creates Desktop/Start menu launchers without elevation. Public binary
 redistribution and clean-machine acceptance remain separate from source publication.
@@ -90,7 +90,7 @@ Private frozen GUI/CLI bundles are assembled from version/hash-pinned inputs; se
 complete source/notice obligations and broader acceptance remain open. App source
 is AGPLv3; dependency, instrument, style, soundfont, sample and other asset terms
 remain separate. No user samples/plugins, outputs, narration, weights or secrets
-belong in the repository. Public intent does not authorize publication or pushing.
+belong in the repository. The owner approved sanitized source publication to ShootPara/sample-arranger; private history and public binary distribution remain separate.
 
 Run the regression suite with the pinned UI runtime:
 

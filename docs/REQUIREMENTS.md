@@ -4,7 +4,7 @@ Updated 2026-11-04. Source U1: owner instructions and clarifications in the curr
 
 | ID | Requirement |
 |---|---|
-| R01 | Windows standalone application, intended for a public open-source repository. Source publication and local deployment are now requested; exact public repository target must be verified. |
+| R01 | Windows standalone application, intended for a public open-source repository. Sanitized source published to the owner-approved ShootPara/sample-arranger; personal local Windows deployment delivered. |
 | R02 | Prefer free tools. No recurring dependency fees; necessary one-time purchases require separate approval. Open source does not select a license automatically. |
 | R03 | Import/query a local sample catalog; reliable metadata first, audio analysis where needed; confidence, provenance, correction and rescanning. Investigate actual MAGIX formats. |
 | R04 | Interpret natural-language music goals, retrieve suitable samples and produce coherent editable arrangements. |
@@ -25,7 +25,7 @@ Updated 2026-11-04. Source U1: owner instructions and clarifications in the curr
 
 ## Scope boundaries
 
-The owner subsequently authorized implementation, reputable local dependencies and local commits. The owner now requests usable local delivery and sanitized source publication. Exact repository identity remains to be confirmed; public binary redistribution is not cleared. Purchases, new legal agreements, credential reuse and security/access expansion remain separately gated. Existing model/settings remain untouched. Local-only Windows deployment and AGPLv3 direction are accepted, subject to dependency review. Document rationale for future cloners.
+The owner subsequently authorized implementation, reputable local dependencies and local commits. The owner now requests usable local delivery and sanitized source publication. Exact repository ShootPara/sample-arranger was approved and sanitized source published; public binary redistribution is not cleared. Purchases, new legal agreements, credential reuse and security/access expansion remain separately gated. Existing model/settings remain untouched. Local-only Windows deployment and AGPLv3 direction are accepted, subject to dependency review. Document rationale for future cloners.
 
 R13 applies to normal deliverables; R16 is ongoing disposable internal PCM beyond four minutes. Normal output is stereo44.1 kHz MP3 192 kbps CBR. Current evidence and unfinished requirements are in ACCEPTANCE_LEDGER.md.
 
