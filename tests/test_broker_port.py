@@ -18,7 +18,7 @@ from commands import execute
 class BrokerPortTests(unittest.TestCase):
     def test_protected_app_connection_real_wire_proposal_and_no_token_in_requests_or_projects(self):
         observed=[];identity=str(uuid.uuid4());epoch=str(uuid.uuid4());token='fixture-app-credential-'+('x'*32)
-        proposal={'revision':1,'progression':[1,4],'density':'sparse','melody_pattern':[{'tone':0,'ticks':1920,'velocity':80},{'tone':2,'ticks':1920,'velocity':72}]}
+        proposal={'revision':1,'progression':[1,4],'density':'sparse','melody_grid':[0,-1,2,-1,1,-1,2,-1]}
         class Handler(http.server.BaseHTTPRequestHandler):
             def log_message(self,*args):pass
             def respond(self,value,code):
@@ -34,7 +34,8 @@ class BrokerPortTests(unittest.TestCase):
                 self.assertFalse(status()['configured']);configure(f'http://127.0.0.1:{server.server_port}',token)
                 self.assertTrue(status()['configured'])
                 result=score_plan('4 seconds gentle music',{'seconds':4,'root':9,'mode':'minor','bpm':120})
-                self.assertEqual(result['score']['duration_frames'],176400);self.assertEqual(result['score']['melody_pattern'],proposal['melody_pattern'])
+                self.assertEqual(result['score']['duration_frames'],176400);self.assertEqual([cell['tone'] for cell in result['score']['melody_pattern']],proposal['melody_grid'])
+                self.assertEqual(sum(cell['ticks'] for cell in result['score']['melody_pattern']),3840)
                 self.assertEqual(len(observed),1);path,wire=observed[0];self.assertEqual(path,'/api/v1/ai/jobs')
                 self.assertEqual(wire['parameters'],{'context_tokens':4096,'max_output_tokens':1024,'temperature':0,'thinking':False})
                 self.assertNotIn('model',wire);self.assertNotIn(token,json.dumps(wire));self.assertNotIn(directory,json.dumps(wire))

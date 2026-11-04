@@ -94,5 +94,23 @@ If server guards fail, report the safe stage/error type; never print private log
 credential files into chat. Script host guards reflect this owner's measured setup;
 cloners must deliberately adapt them and use their own broker/CA/identities.
 
-Pending state is now the operator's sealed reply, not another permission request.
-Do not claim live AI until Complete and one actual validated app inference succeed.
+The operator's sealed reply was subsequently returned and imported successfully.
+Authenticated broker status and one real validated MIDI plan/render now pass.
+The first live proposal failed bar-length arithmetic and was rejected without a
+render. Default AI score planning now asks only for four/eight fixed-grid tones or
+rests; the host computes ticks and velocity. Advanced explicit-pattern intentions
+remain available and validated. This keeps the small model responsible for musical
+choices while exact timing stays deterministic. No model/temperature override or
+cloud fallback was introduced.
+
+
+## Verified connection, 2026-11-04
+
+The owner reported that another operator resolved the server-side handoff and placed
+the sealed reply. Complete verified the prepared request/endpoint/CA and protected
+the dedicated app token. ai.connection.check returned reachable/idle/accepting.
+A fresh host-grid ai.score.plan succeeded in one generation attempt,8.422s, and its
+accepted score was saved and rendered to a non-silent four-second192k MP3 with176400
+frames. Only focused grid/transport checks were run; no broad suite or new soak.
+Use **AI plan** in the installed app; **Build plan** remains the explicit local-rule
+option. ai.status is configuration presence, not a continuously probed health claim.

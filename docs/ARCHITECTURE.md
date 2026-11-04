@@ -100,3 +100,7 @@ This is a local project copy, not repository publication or asset rights clearan
 Latest AI status: owner authorized activation/resources on2026-11-04. broker_port and
 AI UI/shared operations now implement the app side. See AI_SETUP.md for the remaining
 server execution/enrollment gap, which supersedes historical approval-hold wording.
+
+The sealed reply has now been imported and a real dedicated-identity model plan/render
+verified. AI_SETUP.md records the host-timed grid fix and supersedes the execution-gap
+status above. The app still does not choose a provider/model or inherit coding keys.

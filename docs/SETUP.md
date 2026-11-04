@@ -87,7 +87,7 @@ the adaptation seam if another clone needs a remote service; add authentication,
 uploads, ownership and bounded playback acknowledgments explicitly before exposing
 anything. Filesystem paths here are host-local, not cross-machine identifiers.
 
-Live music-app inference is disabled pending its own authorized identity. Never copy
+This installation now has a dedicated live app identity and a verified model-plan/render path; see AI_SETUP.md. Cloners must configure their own broker identity/CA. Never copy
 coding-worker credentials, connect directly to Ollama, enable cloud fallback, change
 the selected model or widen network access during setup. The actual broker envelope
 is small:4096 context/1024 output, conservative UTF-8 input accounting. Keep retrieval,

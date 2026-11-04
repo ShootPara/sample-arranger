@@ -31,7 +31,8 @@ bytes. No microphone capture or physical-gaplessness claim is involved.
 
 Read [QUICKSTART](QUICKSTART.md), [KNOWN_ISSUES](KNOWN_ISSUES.md),
 [FEEDBACK](FEEDBACK.md) and [ACCEPTANCE_LEDGER](ACCEPTANCE_LEDGER.md).
-Live AI identity, broad vendor support, richer musical variation and the other
+Live AI was subsequently connected and verified; see AI_SETUP.md. Broad vendor
+support, richer musical variation and the other
 partial requirements remain honest follow-up work. Do not treat them as a reason to
 keep the usable app from the owner or launch another broad testing program.
 

@@ -1,5 +1,7 @@
 # CLI implementation and intended broker contract
 
+Current AI status: dedicated app enrollment and actual model-plan-to-MP3 verification now pass. See AI_SETUP.md; earlier approval/channel-gap entries below are historical and superseded.
+
 Updated 2026-11-04. Full intended contract below. The executable local JSON interface is src/commands.py; invoke capabilities for its supported operations/arguments. Earlier proposed families are not all implemented. No network listener is installed. See E07/E08, supervisor evidence and the no-live-server-access restriction.
 
 ## Executable local requests

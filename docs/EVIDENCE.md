@@ -30,3 +30,15 @@ only public request/encrypted reply travel, and the private key stays local.
 At this update the sealed server reply/live verification is still pending. No
 coding secret, token, request artifact, private key or raw operational log is
 included in this public repository. No broader suite/soak was started.
+
+
+Live AI completion,2026-11-04: the operator returned the sealed reply; client import
+and authenticated broker status passed. The first live rhythm proposal failed bar
+arithmetic and was rejected, not rendered. Default AI score planning was changed to
+four/eight host-timed note/rest grid steps while advanced explicit patterns remain.
+Two focused transport checks and one grid regression passed. A fresh actual model
+plan succeeded in one attempt8.422s and rendered4.0s/176400frames of non-silent192k
+MP3 (sample peak-15.956429dBFS,RMS-26.62641). The updated clean app was installed and
+its authenticated status rechecked. No broad test suite or new soak. This is narrow
+MIDI/model-to-render evidence, not broad musical/sample-selection quality acceptance.
+No token, private key, sealed enrollment artifact or private audio is published.

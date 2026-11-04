@@ -17,6 +17,18 @@ PROPOSAL={'revision':3,'progression':[1,4],'density':'sparse','melody_pattern':P
 
 
 class MidiPlanningTests(unittest.TestCase):
+    def test_model_grid_uses_host_timing_and_velocity_without_bar_arithmetic(self):
+        state={**deepcopy(STATE),'grid_steps':8}
+        proposal={'revision':3,'progression':[1,4],'density':'sparse','melody_grid':[0,-1,2,-1,1,-1,2,-1]}
+        request=prepare(state);self.assertEqual(request['output_schema']['properties']['melody_grid']['minItems'],8)
+        result=validate_proposal(state,{'structured':proposal});pattern=result['intent']['melody_pattern']
+        self.assertEqual(sum(cell['ticks'] for cell in pattern),3840)
+        self.assertEqual({cell['ticks'] for cell in pattern},{480})
+        self.assertEqual([cell['velocity'] for cell in pattern],[76,0,76,0,76,0,76,0])
+        self.assertEqual(result['score']['duration_frames'],176400)
+        with self.assertRaises(ValueError):validate_proposal(state,{'structured':{**proposal,'melody_grid':[0]*7}})
+        with self.assertRaises(ValueError):validate_proposal(state,{'structured':{**proposal,'melody_grid':[-1]*8}})
+
     def test_relative_phrase_rest_harmony_exact_noteoffs_and_partial_end(self):
         result=validate_proposal(STATE,{'structured':PROPOSAL});score=result['score'];validate(score)
         self.assertEqual(score['generator'],'intent-compiler-3')

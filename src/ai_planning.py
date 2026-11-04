@@ -34,9 +34,10 @@ def score_plan(initial,intent,refined=None,*,port=None):
     parsed,accepted=context(initial,intent,refined)
     if accepted is None:return parsed
     from midi_planning import propose_with_port
-    hard={'bpm':accepted['bpm'],'root':accepted['root'],'mode':accepted['mode'],**{key:deepcopy(value) for key,value in intent.items() if key in ('bpm','root','mode','parts','density','seed','progression','previous_chord')}}
+    hard={'bpm':accepted['bpm'],'root':accepted['root'],'mode':accepted['mode'],**{key:deepcopy(value) for key,value in intent.items() if key in ('bpm','root','mode','parts','density','seed','progression','previous_chord','melody_pattern')}}
     hard['bars']=min(4,accepted['bars']);hard['resolve']=False
     state={'revision':1,'brief':parsed['effective'],'intent':hard}
+    if 'melody_pattern' not in hard:state['grid_steps']=8
     result=propose_with_port(state,port or BrokerPort(),cancel_event=CancelMarker())
     generated=compile_intent({**intent,'progression':result['intent']['progression'],'density':result['intent']['density'],'melody_pattern':result['intent']['melody_pattern']})
     generated['ai_provenance']={'planner':'local-model through dedicated broker identity','phrase_state_sha256':result['state_sha256'],
