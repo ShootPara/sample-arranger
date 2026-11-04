@@ -1,0 +1,4 @@
+# CPython3.12 Windows x64 wheels from official PyPI metadata, checked2026-11-03.
+PySide6-Essentials==6.12.0 --hash=sha256:c9a95102aa23c1f86516a30d5a9be37552d324eee7e567eb7508973f1218cb42
+shiboken6==6.12.0 --hash=sha256:a1906cb8116869178c64b6bab52623bbc8b4ceed7b30bfc3c9aa0f6e67f6438e
+numpy==2.2.5 --hash=sha256:ced69262a8278547e63409b2653b372bf4baff0870c57efa76c5703fd6543282

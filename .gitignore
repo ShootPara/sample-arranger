@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+/build/
+/jobs/
+/data/
+.env
+.env.*
+*.key
+*.pem
+
+# Private runtime/media and user plugins
+*.sqlite
+*.sqlite-*
+*.db
+*.wav
+*.mp3
+*.flac
+*.vst3

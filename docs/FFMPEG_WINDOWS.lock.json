@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "observed_utc": "2026-11-04",
+  "source": "Existing Alienware WinGet Gyan.FFmpeg9.0.2 installation; observed binaries, not an upstream archive attestation",
+  "distribution_cleared": false,
+  "tools": [
+    {
+      "name": "ffmpeg.exe",
+      "bytes": 227823104,
+      "sha256": "589e50b766d251afdf181dd664d40bd94407e200b019989fd7468c7d118a28d0",
+      "version_line": "ffmpeg version 9.0.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers"
+    },
+    {
+      "name": "ffprobe.exe",
+      "bytes": 227621376,
+      "sha256": "02264dfa4f56baaa31e443ece8aa16d397f6b008200e7fd184d22b9009e75fd3",
+      "version_line": "ffprobe version 9.0.2-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers"
+    },
+    {
+      "name": "ffplay.exe",
+      "bytes": 229345792,
+      "sha256": "6de07c2f9e5580f6250220341a449b62e03b7b6619848011d9178b1f7599630e",
+      "version_line": "ffplay version 9.0.2-full_build-www.gyan.dev Copyright (c) 2003-2026 the FFmpeg developers"
+    }
+  ]
+}
