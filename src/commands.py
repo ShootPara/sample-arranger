@@ -15,6 +15,10 @@ from runtime import module_command
 OPERATIONS={
     "capabilities":(set(),set()),
     "contracts.schema":(set(),{'operation'}),
+    "ai.status":(set(),set()),
+    "ai.connection.check":(set(),set()),
+    "ai.score.plan":({'initial','intent'},{'refined'}),
+    "ai.samples.plan":({'catalog','initial','intent'},{'refined'}),
     "brief.plan":({"catalog","initial"},{"refined"}),
     "planning.prepare":({"musical_state","candidates"},{"context","output_limit"}),
     "planning.validate":({"musical_state","candidates","response"},{"context","output_limit"}),
@@ -107,11 +111,20 @@ def execute(request):
                 'resources':{'command_tree_memory_bytes':command_memory_bytes(),'default_plugin_tree_memory_bytes':plugin_memory_bytes(),
                              'shared_cap_across_concurrent_commands':False,'activity_slots':'one each: render, continuous, inspect, editor'},
                 "output":{"format":"mp3","bitrate_kbps":192,"max_seconds":240},
-                "live_inference":"app identity not authorized",
+                "live_inference":__import__('broker_port').status(),
                 "operations":{name:{"required":sorted(req),"optional":sorted(opt)} for name,(req,opt) in OPERATIONS.items()}}
     elif operation=='contracts.schema':
         from contract_schema import request_schema
         result=request_schema(**args)
+    elif operation=='ai.status':
+        from broker_port import status
+        result=status()
+    elif operation=='ai.connection.check':
+        from ai_planning import check_connection
+        result=check_connection()
+    elif operation in ('ai.score.plan','ai.samples.plan'):
+        from ai_planning import score_plan,sample_plan
+        result=(score_plan if operation=='ai.score.plan' else sample_plan)(**args)
     elif operation.startswith('midi.planning.'):
         from midi_planning import prepare,validate_proposal,current
         args['state']=args.pop('musical_state')
@@ -338,7 +351,7 @@ def main():
         result=execute(request)
         emit('completed',operation=operation,elapsed_seconds=round(time.monotonic()-started,3))
         print(json.dumps(result,allow_nan=False))
-    except (ValueError,TypeError,KeyError,OSError,sqlite3.Error,subprocess.SubprocessError) as error:
+    except (ValueError,TypeError,KeyError,OSError,RuntimeError,sqlite3.Error,subprocess.SubprocessError) as error:
         from command_errors import describe
         marker=os.environ.get('ARRANGER_CANCEL_FILE')
         report=describe(error,canceled=bool(marker and Path(marker).exists()))

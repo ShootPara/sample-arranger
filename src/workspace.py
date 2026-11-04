@@ -209,10 +209,11 @@ class Workspace(QMainWindow):
         title=QLabel("ARRANGEMENT");title.setFont(QFont("Segoe UI",13,QFont.Weight.Bold));box.addWidget(title)
         self.brief=QLineEdit();self.brief.setAccessibleName("Music brief");self.brief.setPlaceholderText("A one minute upbeat music bed…");box.addWidget(self.brief)
         row=QHBoxLayout();self.mode=QComboBox();self.mode.addItems(["Sample library","Built-in instruments"]);self.mode.setAccessibleName("Planning source")
-        row.addWidget(self.mode);row.addWidget(button("Build plan",self.plan));row.addWidget(button("New brief",self.new_brief));row.addStretch()
+        row.addWidget(self.mode);row.addWidget(button("Build plan",self.plan));row.addWidget(button('AI plan',self.ai_plan));row.addWidget(button("New brief",self.new_brief));row.addStretch()
         self.snap=QCheckBox("Snap to ¼ beat");self.snap.setChecked(True);row.addWidget(self.snap);box.addLayout(row)
         history_row=QHBoxLayout();history_row.addWidget(button('Undo edit',lambda:self.undo_plan(False)));history_row.addWidget(button('Redo edit',lambda:self.undo_plan(True)));history_row.addWidget(button('Lock / unlock selected note',self.toggle_note_lock));history_row.addWidget(button('Melody rhythm…',self.edit_melody_rhythm));history_row.addStretch();box.addLayout(history_row)
-        hint_row=QHBoxLayout();hint=QLabel("Local musical rules · AI planning is not connected");hint.setObjectName("subtle");hint_row.addWidget(hint);hint_row.addStretch();hint_row.addWidget(button('Protect music…',self.edit_musical_locks));box.addLayout(hint_row)
+        from broker_port import status
+        hint_row=QHBoxLayout();self.ai_hint=QLabel('Local rules available · AI '+('configured' if status()['configured'] else 'not configured'));self.ai_hint.setObjectName('subtle');self.ai_hint.setWordWrap(True);hint_row.addWidget(self.ai_hint);hint_row.addStretch();hint_row.addWidget(button('AI connection…',self.ai_connection));hint_row.addWidget(button('Protect music…',self.edit_musical_locks));box.addLayout(hint_row)
         self.scene=QGraphicsScene(self);self.timeline=QGraphicsView(self.scene);self.timeline.setAccessibleName("Arrangement timeline; use section and note tables for keyboard editing")
         self.timeline.setRenderHint(QPainter.RenderHint.Antialiasing);self.timeline.setMinimumHeight(240);box.addWidget(self.timeline,2)
         self.timeline.setAlignment(Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
@@ -577,6 +578,33 @@ class Workspace(QMainWindow):
                 if result["state"]=="ready":self.remember_plan();self.sections=result["sections"];self.score=None;self.source_assets={};self.refresh_plan();self.message("Plan ready. Audition samples and edit sections before rendering.")
                 else:self.message(result["message"])
             self.request("brief.plan",args,planned)
+    def ai_connection(self):
+        if self.busy:self.message('Wait for active work before changing the AI connection.');return
+        from ai_connection_dialog import ConnectionDialog
+        if ConnectionDialog(self).exec()==QDialog.DialogCode.Accepted:
+            self.ai_hint.setText('Local rules available · AI configured; verifying broker')
+            self.request('ai.connection.check',{},lambda result:(self.ai_hint.setText('AI broker connected · audio stays local'),self.message('AI broker reachable. Use AI plan for a model-guided proposal.')))
+    def ai_plan(self):
+        if self.busy:return
+        if self.score and (self.score.get('note_locks') or self.score.get('musical_locks')):self.message('Unlock protected musical decisions before replacing this plan.');return
+        initial=self.initial if self.initial is not None else self.brief.text();refined=self.brief.text() if self.initial is not None else None
+        parsed=interpret(initial,refined)
+        if parsed['state']!='ready':
+            if parsed['state']=='needs_input':self.initial=initial
+            self.message(parsed['message']);return
+        intent={'bpm':parsed.get('recommended_bpm') or self.bpm.value(),'seconds':parsed['seconds'],'root':self.key.currentIndex(),'mode':self.scale.currentText(),**parsed['musical']}
+        args={'initial':initial,'intent':intent}
+        if refined is not None:args['refined']=refined
+        builtin=self.mode.currentIndex()==1
+        if not builtin:args['catalog']=self.paths['catalog'].text()
+        signature=self.recovery_signature()
+        def planned(result):
+            if self.recovery_signature()!=signature:self.message('Workspace changed during AI planning. Newer edits were kept.');return
+            if result['state']!='ready':self.message(result['message']);return
+            self.remember_plan();self.score=result.get('score');self.sections=result.get('sections',[]);self.source_assets=result.get('source_assets',{})
+            if self.score:self.bpm.setValue(self.score['bpm']);self.key.setCurrentIndex(self.score['root']);self.scale.setCurrentText(self.score['mode'])
+            self.refresh_plan();self.ai_hint.setText('AI proposal validated locally · audio stays local');self.message('AI plan ready for review and rendering. Musical timing, harmony and source identities were validated locally.')
+        self.request('ai.score.plan' if builtin else 'ai.samples.plan',args,planned)
     def search_library(self):self.request("catalog.search",{"catalog":self.paths["catalog"].text(),"term":self.search.text(),"limit":100},self.populate_library)
     def recommend_samples(self):
         arguments={'catalog':self.paths['catalog'].text(),'term':self.search.text(),'bpm':self.bpm.value(),'limit':24}

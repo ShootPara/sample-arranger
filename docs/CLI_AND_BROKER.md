@@ -576,3 +576,15 @@ so assigning a protected part to VST3 does not invalidate its dry palette subset
 
 Broader audio section locks, model-context compaction of these projections and a
 routing-dialog lock editor remain unfinished. Existing exact note locks are separate.
+
+
+## Configured AI adapter, 2026-11-04 owner authorization
+
+Owner authorization now covers enabling app AI and accessing resources needed for
+that connection. AI_SETUP.md supersedes older approval-hold wording. ai.status,
+ai.connection.check, ai.score.plan and ai.samples.plan are shared operations;
+Windows DPAPI stores only the dedicated app credential outside source/projects.
+BrokerPort maps the documented normal v1 jobs envelope, owned polling/cancellation,
+instance identity, bounded verified TLS and authenticated-denial/no-retry semantics.
+It never invokes coding keyed routes, chooses a model or falls back to a provider.
+Live enrollment remains an actual execution-channel gap, not a permission question.

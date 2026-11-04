@@ -19,3 +19,14 @@ accessibility, musical-quality or public binary redistribution clearance. No liv
 or coding credentials are included. User audio/catalogs/jobs/plugins are not published.
 
 Source publication and personal local delivery completed. See DELIVERY.md and FEEDBACK.md.
+
+
+AI update: the owner authorized activation and resources. A dedicated verified
+HTTP broker adapter, DPAPI connection setup, AI plan UI/shared CLI and bounded
+local retrieval/MIDI validation are implemented. Two real-loopback HTTP fixture
+checks pass; these do not establish live model inference. The operator run-once
+sealed enrollment handoff uses RSA-OAEP-SHA256/public CA binding/current-user DPAPI;
+only public request/encrypted reply travel, and the private key stays local.
+At this update the sealed server reply/live verification is still pending. No
+coding secret, token, request artifact, private key or raw operational log is
+included in this public repository. No broader suite/soak was started.

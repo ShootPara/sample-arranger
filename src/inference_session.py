@@ -1,9 +1,9 @@
 """Bounded orchestration over an injected normalized inference port.
 
-This is NOT an HTTP client, wire-contract claim, endpoint, model selector or
-credential provider. The finished app still has no authorized live adapter. A future
-adapter must map its approved principal's real contract and honor every supplied
-timeout; Python cannot forcibly interrupt a noncompliant synchronous callback.
+This controller is not an HTTP client, model selector or credential provider.
+broker_port supplies the configured app-owned HTTP adapter. Injected adapters must
+honor every supplied timeout; Python cannot forcibly interrupt a noncompliant
+synchronous callback.
 """
 import hashlib
 import json
@@ -86,6 +86,8 @@ class InferenceSession:
         try:response=self.port.admit(request,timeout=min(5,self.deadline-self.clock()))
         except AdmissionRejected as error:
             receipt['state']='rejected_'+error.reason;raise
+        except PermissionError:
+            receipt['state']='authentication_denied';raise
         except Exception as error:
             receipt['state']='admission_unknown';raise AdmissionUncertain(request_id,sha) from error
         job_id=response.get('id') if isinstance(response,dict) else None

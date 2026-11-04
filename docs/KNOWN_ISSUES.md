@@ -7,9 +7,11 @@ Actual user listening feedback describes the current music as nice but reminisce
 of dungeon-crawler music. More useful variation across future requested generations
 is an objective, not a new delivery blocker or broad test program. See FEEDBACK.md.
 
-- Live AI is disconnected pending a separately approved app identity/adapter.
-  Deterministic local planning/rendering works. Compact sample/MIDI intentions and
-  bounded transport behavior have fixtures; they are not live inference evidence.
+- The owner has now authorized live AI. The app-owned broker adapter, protected
+  connection dialog and AI plan UI/CLI are implemented. Dedicated server enrollment
+  and one live request remain blocked by the unavailable authenticated administrative
+  session, not missing user permission. See AI_SETUP.md. Local HTTP fixtures do not
+  establish a live Trifecta connection.
 - RX10 De-click failed its bypass-state validator case and is not fully compatible.
   A historical real-loop/preset job `57f35953-881b-4abc-ac1a-d95c7db0d4a1` measured
   approximately−91dB. That historical near-silent output is unresolved; other audible

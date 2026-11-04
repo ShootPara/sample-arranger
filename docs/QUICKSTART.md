@@ -45,8 +45,9 @@ The installed `arranger-cli.exe` accepts one JSON request through stdin or
 Use `contracts.schema` for request schemas, `compose.render` for a deterministic
 music job, or Save a project and use `jobs.submit` with a UUID and project SHA256
 for retry reconciliation. See CLI_AND_BROKER.md for precise operations and limits.
-Audio, VST3, MIDI and retrieval run locally. Live AI is not connected: app identity
-approval remains outstanding; coding-platform credentials are never inherited.
+Audio, VST3, MIDI and retrieval run locally. Use AI connection and AI plan for the dedicated local-model broker adapter.
+Server enrollment/live verification remain outstanding; user authorization has been
+given. See AI_SETUP.md. Coding-platform credentials are never inherited.
 
 This is a usable development delivery with known gaps, not a claim of universal
 plugin compatibility or finished musical/visual quality. Report a problem with the

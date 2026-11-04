@@ -95,3 +95,8 @@ copy exceptions, cancellation and later recovery of dead marked copies; active a
 unrecognized directories remain protected. Opaque vendor library paths/activation
 are not portable, and raw state/history/brief may still contain private content.
 This is a local project copy, not repository publication or asset rights clearance.
+
+
+Latest AI status: owner authorized activation/resources on2026-11-04. broker_port and
+AI UI/shared operations now implement the app side. See AI_SETUP.md for the remaining
+server execution/enrollment gap, which supersedes historical approval-hold wording.
